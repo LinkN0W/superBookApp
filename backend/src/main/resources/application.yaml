@@ -1,0 +1,25 @@
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/superBookDB
+    username: sa
+    password: 1234
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ttestov710@gmail.com
+    password: xnaazaerlcozpgcz
+    properties:
+        mail:
+          smtp:
+            auth: true
+            starttls:
+              enable: true
+server:
+  port: 8088
