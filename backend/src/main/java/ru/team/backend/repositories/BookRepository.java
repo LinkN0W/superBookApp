@@ -39,6 +39,8 @@ public interface BookRepository extends CrudRepository<Book, UUID> {
 
 
 
+
+
     @Modifying
     @Transactional
     @Query("UPDATE Book b set b.delete = :delete where b.id = :id")

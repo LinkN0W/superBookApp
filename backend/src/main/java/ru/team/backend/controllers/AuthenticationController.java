@@ -57,6 +57,7 @@ public class AuthenticationController {
                 request.getEmail(),
                 passwordEncoder.encode(request.getPassword()),
                 User.UserRole.ROLE_USER);
+        user.setDelete(false);
         userService.save(user);
 
         //memberService.save((Listener) listener);

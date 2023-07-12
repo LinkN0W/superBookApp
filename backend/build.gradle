@@ -11,6 +11,16 @@ java {
 	sourceCompatibility = '17'
 }
 
+jar {
+	manifest {
+		attributes(
+				'Main-Class': 'ru.team.SuperbookApplication'
+		)
+	}
+	from {
+		configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+	}
+}
 
 configurations {
 	compileOnly {

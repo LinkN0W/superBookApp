@@ -41,6 +41,7 @@ public class BookController {
 
     @PostMapping("/new")
     public Optional<Book> save(@RequestBody Book book){
+        book.setDelete(false);
         bookService.save(book);
         return Optional.ofNullable(book);
     }

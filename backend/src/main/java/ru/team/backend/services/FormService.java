@@ -40,7 +40,9 @@ public class FormService {
         Optional<User> currentUser = userRepository.findById(userId);
         //Book addedBook = bookRepository.findByIdAndDeleteIsFalse(form.getBookId());
 
-        if(currentUser.isPresent() && bookRepository.findByIdAndDeleteIsFalse(form.getBookId()).isPresent()) {
+        if(currentUser.isPresent()
+                && bookRepository.findByIdAndDeleteIsFalse(form.getBookId()).isPresent()
+                && !formRepository.existsByBookId(form.getBookId())) {
             form.setUserId(currentUser.get().getId());
             form.setDateOfTaking(new Date());
             form.setPenalties(0);

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 
 import java.util.Date;
@@ -27,14 +28,17 @@ public class Form{
     private UUID userId ;
 
     @Column(name = "book_id")
+    @NonNull
     private UUID bookId ;
 
+    @NonNull
     @Column(name = "date_of_taking")
     private Date dateOfTaking;
 
     @Column(name = "date_of_returning")
     private Date dateOfReturning;
 
+    @NonNull
     @Column(name = "term_of_returning")
     private Date termOfReturning;
 
