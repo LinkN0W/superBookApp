@@ -23,7 +23,7 @@ public interface FormRepository extends CrudRepository<Form, UUID> {
     Optional<Form> findByUserIdAndBookId(UUID userId, UUID bookId);
 
 
-    boolean existsByBookId(UUID bookId);
+    boolean existsByBookIdAndDateOfReturningIsNotNull(UUID bookId);
 
     void deleteByUserIdAndBookId(UUID userId, UUID bookId);
 
