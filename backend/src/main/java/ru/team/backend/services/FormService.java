@@ -52,6 +52,12 @@ public class FormService {
         else return Optional.empty();
     }
 
+    public void returnBook(UUID currentUserId,UUID bookId, Date currentDate){
+        Optional<Form> form = formRepository
+                .getFormByUserIdAndBookIdAndDateOfReturningIsNull(currentUserId, bookId);
+        form.ifPresent(e-> formRepository.returnBook(e.getId(), currentDate));
+    }
+
     /*public void deleteForm(UUID userId, UUID bookId){
         formRepository.deleteByUserIdAndBookId(userId, bookId);
         //bookRepository.updateBookByIdPlusOneFromAmount(bookId);

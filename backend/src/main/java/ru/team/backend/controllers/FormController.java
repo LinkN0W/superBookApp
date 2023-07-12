@@ -1,6 +1,8 @@
 package ru.team.backend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -54,6 +56,18 @@ public class FormController {
     @GetMapping("/count/{userId}")
     public Iterable<Form> countUserPenalties(@PathVariable UUID userId ){
         return formService.countUserPenalties(userId, new Date());
+    }
+
+    @PatchMapping("/return/{bookId}")
+    public ResponseEntity<?> returnBook(@PathVariable UUID bookId ){
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            formService.returnBook(userService.getUserByEmail(auth.getName()).getId(),bookId, new Date());
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
 
